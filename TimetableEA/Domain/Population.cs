@@ -20,5 +20,6 @@ namespace TimetableEA.Domain
                 Individs = individuals,
             };
         }
+
     }
 }

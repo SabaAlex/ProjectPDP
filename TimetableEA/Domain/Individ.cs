@@ -6,9 +6,11 @@ using System.Linq;
 
 namespace TimetableEA.Domain
 {
-    public class Individ
+    public class Individ : IComparable
     {
         public List<Gene> Genes { get; set; } = new List<Gene>();
+
+        public int Fitness { get; set; }
 
         public static Individ Generate()
         {
@@ -23,13 +25,25 @@ namespace TimetableEA.Domain
             };
         }
 
+        public int CompareTo(object obj)
+        {
+            var objCopy = (Individ)obj;
+
+            if (Fitness > objCopy.Fitness)
+                return 1;
+            if (Fitness < objCopy.Fitness)
+                return -1;
+            
+            return 0;
+        }
+
         public override string ToString()
         {
             var index = -1;
             return Genes.Aggregate("", (acc, curr) =>
             {
                 index++;
-                return $"Group: {index % AlgorithmData.GroupsNumber}, Course: {index % AlgorithmData.CoursesNumber}, {curr}";
+                return acc + $"Course: {index / AlgorithmData.CoursesNumber}, Group: {index % AlgorithmData.GroupsNumber}, {curr}\n";
             });
         }
     }

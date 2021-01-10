@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using TimetableEA.EA.UI;
 
 namespace TimetableEA
 {
@@ -6,7 +9,7 @@ namespace TimetableEA
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            UI.START();
         }
     }
 }
