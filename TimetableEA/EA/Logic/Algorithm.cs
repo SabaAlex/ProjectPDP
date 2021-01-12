@@ -49,7 +49,7 @@ namespace TimetableEA.EA.Logic
             {
                 var newPopulation = new ConcurrentBag<Individ>();
 
-                Parallel.For(0, PopulationSize, index =>
+                Parallel.For(0, PopulationSize / 2, index =>
                 {
                     var siblings = Crossover(Sample(sampleSize));
                     newPopulation.Add(siblings.Item1);
