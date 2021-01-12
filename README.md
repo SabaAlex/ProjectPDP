@@ -21,6 +21,9 @@ Team members: @SabaAlex and @RusuRaul
 * CPU: Intel Core i7-7700HQ, 2.80GHz
 * RAM: 16 GB
 
+* CPU: Intel Core i7-8565U, 1.80GHz
+* RAM: 8 GB
+
 ## Algorithm
 
   In the following section, we will present a brief description.
@@ -69,7 +72,7 @@ Fitness:
 ## Short Description of the Implementation:
 
 * Threads
-* Distributed - MPI
+* Distributed
 
 
 ### Threads
@@ -79,15 +82,19 @@ Fitness:
     Parallelized crossover between individuals, each gene is computed in paralel for the 2 next individuals
     Parallelized mutation
 
-### Distributed - MPI
-
+### Distributed
+	
+	Data exchange with sockets
+	Remote workers compute fitness, crossover, mutation
+	Remote workers connect to the main app
+	Executor service distributes work to all connected workers
 
 ## Performance Tests
 
 | Algorithm                        | Population: 100, SampleSize: 10, Generations: 20 | Population: 20, SampleSize: 5, Generations: 10 | Population: 50, SampleSize: 5, Generations: 10 |
 | -------------------------------- |:--------:|:-------:|:---------:|
-| Threads         | 652,200 ms |  15000 ms | 120000 ms |
-| Distributed MPI | ? ms | ? ms | ? ms |
+| Threads         | 652200 ms |  15000 ms | 120000 ms |
+| Distributed     | 175285 ms | 7500 ms | 502321 ms |
 
 
 ## Conclusion
