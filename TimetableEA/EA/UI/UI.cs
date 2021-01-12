@@ -23,8 +23,8 @@ namespace TimetableEA.EA.UI
 
         public static void StartDistributed()
         {
-            var ea = new DistributedAlgorithm(10);
-            var timer = ea.StartAlgorithm(800, 5);
+            var ea = new DistributedAlgorithm(20);
+            var timer = ea.StartAlgorithm(400, 10);
 
             Console.WriteLine($"Execution time: {timer}ms");
 

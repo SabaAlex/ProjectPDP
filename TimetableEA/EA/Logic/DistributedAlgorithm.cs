@@ -38,6 +38,8 @@ namespace TimetableEA.EA.Logic
             Individ bestIndividPop = null;
             Population.Individs.ForEach(individ =>
             {
+                
+
                 if (bestFitnessPop > individ.Fitness)
                 {
                     bestFitnessPop = individ.Fitness;
@@ -89,8 +91,8 @@ namespace TimetableEA.EA.Logic
 
                     engine.ExecutorService.ScheduleTask(message, result =>
                     {
-                        newPopulation.Add(message.Individ1);
-                        newPopulation.Add(message.Individ2);
+                        newPopulation.Add(result.Individ1);
+                        newPopulation.Add(result.Individ2);
                     });
 
                 }

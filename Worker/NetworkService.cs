@@ -18,6 +18,8 @@ namespace Worker
         public static double MUTATION_RATE { get; set; } = 0.05;
         public static double CROSSOVER_SELECTION_RATE { get; set; } = 0.5;
 
+        private static bool TRACE = false;
+
         private Socket socket;
         private byte[] bytes = new byte[1920 * 1080 * 4];
 
@@ -211,11 +213,13 @@ namespace Worker
                     var message = ReciveData();
                     var result = HandleCommand(message);
                     SendData(result);
-                    if (result.Individ1 != null)
-                        Console.WriteLine($"i1: {result.Individ1.Fitness}");
-                    if (result.Individ2 != null)
-                        Console.WriteLine($"i2: {result.Individ2.Fitness}");
-
+                    if (TRACE)
+                    {
+                        if (result.Individ1 != null)
+                            Console.WriteLine($"i1: {result.Individ1.Fitness}");
+                        if (result.Individ2 != null)
+                            Console.WriteLine($"i2: {result.Individ2.Fitness}");
+                    }
                 }
                 catch
                 {
