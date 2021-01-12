@@ -10,7 +10,7 @@ namespace TimetableEA.EA.UI
     {
         public static void StartParallel()
         {
-            var EA = new ParallelAlgorithm(10);
+            var EA = new ParallelAlgorithm(20);
 
             var timer = EA.StartAlgorithm(20, 5);
 
