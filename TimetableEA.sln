@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableEA", "TimetableEA\TimetableEA.csproj", "{65D7DF07-A218-4023-8EA2-4E394A179F61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimetableEA", "TimetableEA\TimetableEA.csproj", "{65D7DF07-A218-4023-8EA2-4E394A179F61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "Worker\Worker.csproj", "{585C5969-E499-4A98-ADF1-EFD689622C41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{65D7DF07-A218-4023-8EA2-4E394A179F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D7DF07-A218-4023-8EA2-4E394A179F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D7DF07-A218-4023-8EA2-4E394A179F61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{585C5969-E499-4A98-ADF1-EFD689622C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{585C5969-E499-4A98-ADF1-EFD689622C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{585C5969-E499-4A98-ADF1-EFD689622C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{585C5969-E499-4A98-ADF1-EFD689622C41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

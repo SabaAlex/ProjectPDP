@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TimetableEA.StaticData
+namespace Worker.StaticData
 {
     static public class AlgorithmData
     {
