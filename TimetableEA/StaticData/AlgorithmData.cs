@@ -28,10 +28,10 @@ namespace TimetableEA.StaticData
             { 4, "Friday" },
         };
 
-        public static int LocationNumber = 4;
+        public static int LocationNumber = 200;
 
-        public static int CoursesNumber = 10;
+        public static int CoursesNumber = 50;
 
-        public static int GroupsNumber = 8;
+        public static int GroupsNumber = 50;
     }
 }

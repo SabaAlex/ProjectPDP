@@ -15,32 +15,14 @@ namespace TimetableEA.EA.Extensions
         {
             var fitness = 0;
 
-            Parallel.For(0, AlgorithmData.CoursesNumber, index =>
-            {
-                var groupsWithCourseI = individ.Genes.AsParallel().Where((element, index) =>
-                {
-                    return index % AlgorithmData.CoursesNumber == index;
-                }).ToList();
-
-                Interlocked.Add(ref fitness, groupsWithCourseI.Count - groupsWithCourseI.Distinct().Count());
-            });
-
-            //for (var i = 0; i < AlgorithmData.CoursesNumber; i++)
-            //{
-            //    var groupsWithCourseI = individ.Genes.Where((element, index) =>
-            //    {
-            //        return index % AlgorithmData.CoursesNumber == i;
-            //    }).ToList();
-
-            //    fitness += groupsWithCourseI.Count - groupsWithCourseI.Distinct().Count();
-            //}
+            fitness += individ.Genes.Count - individ.Genes.Distinct().Count();
 
             individ.Fitness = fitness;
         }
 
         public static void Mutate(this Individ individ)
         {
-            individ.Genes.ForEach(gene => gene.Mutate());
+            individ.Genes.AsParallel().ForAll(gene => gene.Mutate());
         }
 
         public static Tuple<Individ, Individ> Crossover(this Individ fatherIndivid, Individ motherIndivid)
@@ -48,12 +30,12 @@ namespace TimetableEA.EA.Extensions
             var brotherIndividGenes = new Gene[AlgorithmData.CoursesNumber * AlgorithmData.GroupsNumber];
             var stuckSisterIndividGenes = new Gene[AlgorithmData.CoursesNumber * AlgorithmData.GroupsNumber];
 
-            Parallel.For(0, AlgorithmData.CoursesNumber * AlgorithmData.GroupsNumber, index =>
+            for(var index = 0; index < AlgorithmData.CoursesNumber * AlgorithmData.GroupsNumber; index++)
             {
                 var siblingsGenesTuple = fatherIndivid.Genes[index].Crossover(motherIndivid.Genes[index]);
                 brotherIndividGenes[index] = siblingsGenesTuple.Item1;
                 stuckSisterIndividGenes[index] = siblingsGenesTuple.Item2;
-            });
+            }
 
             return new Tuple<Individ, Individ>
             (

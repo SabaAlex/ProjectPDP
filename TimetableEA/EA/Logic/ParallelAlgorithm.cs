@@ -23,7 +23,7 @@ namespace TimetableEA.EA.Logic
         private List<Individ> Sample(int sampleSize)
         {
             var randomSeed = new Random();
-            return Population.Individs.AsParallel().OrderBy(x => randomSeed.Next()).Take(sampleSize).ToList();
+            return Population.Individs.OrderBy(x => randomSeed.Next()).Take(sampleSize).ToList();
         }
 
         private Tuple<Individ, Individ> Crossover(List<Individ> individs)
@@ -47,14 +47,14 @@ namespace TimetableEA.EA.Logic
 
             while (generations != generationNumber && Population.Fittest().Fitness != 0) 
             {
-                var newPopulation = new ConcurrentBag<Individ>();
+                var newPopulation = new Individ[PopulationSize];
 
-                Parallel.For(0, PopulationSize / 2, index =>
+                for(var i = 0; i < PopulationSize; i += 2)
                 {
                     var siblings = Crossover(Sample(sampleSize));
-                    newPopulation.Add(siblings.Item1);
-                    newPopulation.Add(siblings.Item2);
-                });
+                    newPopulation[i] = siblings.Item1;
+                    newPopulation[i + 1] = siblings.Item2;
+                }
 
                 Population.Individs = newPopulation.ToList();
 
@@ -64,6 +64,8 @@ namespace TimetableEA.EA.Logic
 
                 generationNumber++;
             }
+
+            Console.WriteLine($"Generation: {generationNumber}");
 
             watch.Stop();
 

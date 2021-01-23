@@ -12,7 +12,7 @@ namespace TimetableEA.EA.UI
         {
             var EA = new ParallelAlgorithm(20);
 
-            var timer = EA.StartAlgorithm(20, 5);
+            var timer = EA.StartAlgorithm(400, 10);
 
             Console.WriteLine($"Execution time: {timer}ms");
 
@@ -36,7 +36,7 @@ namespace TimetableEA.EA.UI
 
         public static void START()
         {
-            StartDistributed();
+            StartParallel();
         }
     }
 }

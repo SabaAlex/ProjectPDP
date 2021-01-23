@@ -43,7 +43,7 @@ namespace TimetableEA.Domain
             return Genes.Aggregate("", (acc, curr) =>
             {
                 index++;
-                return acc + $"Course: {index / AlgorithmData.CoursesNumber}, Group: {index % AlgorithmData.GroupsNumber}, {curr}\n";
+                return acc + $"Course: {index / AlgorithmData.GroupsNumber}, Group: {index % AlgorithmData.GroupsNumber}, {curr}\n";
             });
         }
     }
